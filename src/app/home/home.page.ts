@@ -23,24 +23,24 @@ export class HomePage implements AfterViewInit {
       hls1.loadSource(videoSrc1);
       hls1.attachMedia(video1);
       hls1.on(Hls.Events.MANIFEST_PARSED, () => {
-        // No reproducir automáticamente al iniciar
+        video1.play(); // Reproducir automáticamente al cargar
       });
 
       const hls2 = new Hls();
       hls2.loadSource(videoSrc2);
       hls2.attachMedia(video2);
       hls2.on(Hls.Events.MANIFEST_PARSED, () => {
-        // No reproducir automáticamente al iniciar
+        video2.play(); // Reproducir automáticamente al cargar
       });
     } else if (video1.canPlayType('application/vnd.apple.mpegurl') && video2.canPlayType('application/vnd.apple.mpegurl')) {
       video1.src = videoSrc1;
       video1.addEventListener('loadedmetadata', () => {
-        // No reproducir automáticamente al iniciar
+        video1.play(); // Reproducir automáticamente al cargar
       });
 
       video2.src = videoSrc2;
       video2.addEventListener('loadedmetadata', () => {
-        // No reproducir automáticamente al iniciar
+        video2.play(); // Reproducir automáticamente al cargar
       });
     }
   }
