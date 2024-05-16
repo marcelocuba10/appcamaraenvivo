@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">¿Qué tal el puente?</string>
+    <string name="app_name">Que tal el puente</string>
     <string name="title_activity_main">quetalelpuente</string>
     <string name="package_name">app.quetalelpuente.ggcode</string>
     <string name="custom_url_scheme">app.quetalelpuente.ggcode</string>
