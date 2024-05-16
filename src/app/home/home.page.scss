@@ -25,3 +25,21 @@
 #container a {
   text-decoration: none;
 }
+
+.video-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+video {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.mg-iframe{
+  margin-left: -8px;
+}

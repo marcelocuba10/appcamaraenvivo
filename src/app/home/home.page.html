@@ -1,20 +1,20 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
+    <ion-title class="ion-text-center">
+      Camaras en vivo - Triple Frontera
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="video-container">
+    <video #videoPlayer1 controls width="100%" height="auto"></video>
   </div>
+  <div class="video-container">
+    <video #videoPlayer2 controls width="100%" height="auto"></video>
+  </div>
+  <iframe src="https://rtc.aduana.gov.py/stream/player/CAMCDE028" height="300px" width="100%" scrolling="NO" allowfullscreen="" class="mg-iframe"></iframe>
+  <iframe src="https://rtc.aduana.gov.py/stream/player/CAMCDE029" height="300px" width="100%" scrolling="NO" allowfullscreen="" class="mg-iframe"></iframe>
+  <iframe src="https://rtc.aduana.gov.py/stream/player/CAMCDE030" height="300px" width="100%" scrolling="NO" allowfullscreen="" class="mg-iframe"></iframe>
+  <iframe src="https://rtc.aduana.gov.py/stream/player/CAMCDE033" height="300px" width="100%" scrolling="NO" allowfullscreen="" class="mg-iframe"></iframe>
 </ion-content>
