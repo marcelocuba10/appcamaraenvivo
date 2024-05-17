@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="tertiary">
     <ion-title class="ion-text-center">
       Camaras en vivo - Triple Frontera
     </ion-title>
@@ -9,12 +9,38 @@
 <ion-content [fullscreen]="true">
   <div class="video-container">
     <video #videoPlayer1 controls width="100%" height="auto"></video>
+    <div class="video-info">
+      <p>Título del video 1 - Views: {{ views1 }}</p>
+    </div>
+    <div class="progress-bar"></div>
   </div>
+  
   <div class="video-container">
     <video #videoPlayer2 controls width="100%" height="auto"></video>
+    <div class="video-info">
+      <p>Título del video 2 - Views: {{ views2 }}</p>
+    </div>
+    <div class="progress-bar"></div>
   </div>
+
   <iframe src="https://rtc.aduana.gov.py/stream/player/CAMCDE028" height="300px" width="100%" scrolling="NO" allowfullscreen="" class="mg-iframe"></iframe>
+  <div class="iframe-info">
+    <p>Título del iframe 1 - Views: {{ views3 }}</p>
+    <div class="progress-bar"></div>
+  </div>
   <iframe src="https://rtc.aduana.gov.py/stream/player/CAMCDE029" height="300px" width="100%" scrolling="NO" allowfullscreen="" class="mg-iframe"></iframe>
+  <div class="iframe-info">
+    <p>Título del iframe 1 - Views: {{ views4 }}</p>
+    <div class="progress-bar"></div>
+  </div>
   <iframe src="https://rtc.aduana.gov.py/stream/player/CAMCDE030" height="300px" width="100%" scrolling="NO" allowfullscreen="" class="mg-iframe"></iframe>
+  <div class="iframe-info">
+    <p>Título del iframe 1 - Views: {{ views5 }}</p>
+    <div class="progress-bar"></div>
+  </div>
   <iframe src="https://rtc.aduana.gov.py/stream/player/CAMCDE033" height="300px" width="100%" scrolling="NO" allowfullscreen="" class="mg-iframe"></iframe>
+  <div class="iframe-info">
+    <p>Título del iframe 1 - Views: {{ views6 }}</p>
+    <div class="progress-bar"></div>
+  </div>
 </ion-content>
