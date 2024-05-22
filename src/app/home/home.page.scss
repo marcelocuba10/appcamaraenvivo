@@ -35,15 +35,15 @@
   position: relative;
   bottom: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgb(132 130 251);
   color: white;
   padding: 5px;
   margin-top: -4px;
-  margin-bottom: -10px;
+  margin-bottom: -12px;
   height: 40px;
   display: flex;
-  align-items: center; /* Esto centra verticalmente el contenido */
-  justify-content: center; /* Esto centra horizontalmente el contenido */
+  align-items: center;
+  justify-content: center;
 }
 
 .iframe-info {
@@ -69,7 +69,6 @@
   left: 0;
 }
 
-
 video {
   width: 100%;
   max-width: 100%;
@@ -81,4 +80,14 @@ video {
   margin: 0;
   padding: 0;
   margin-left: -17px;
+}
+
+.ion-text-center {
+  text-align: center !important;
+  color: #fff;
+}
+
+ion-icon.icon-eye.md.hydrated {
+  font-size: 20px;
+  vertical-align: sub;
 }

@@ -7,11 +7,16 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingText="Pull to refresh" refreshingSpinner="circles"></ion-refresher-content>
+  </ion-refresher>
+  
   <div *ngFor="let webcam of webcams; let i = index" class="video-container">
     <video *ngIf="webcam.type === 'M3u8'" #videoPlayer controls width="100%" height="auto"></video>
     <iframe *ngIf="webcam.type === 'Iframe'" [src]="webcam.url" height="300px" width="100%" scrolling="NO" allowfullscreen="" class="mg-iframe"></iframe>
     <div class="video-info">
-      <p>{{ webcam.title }} - Views: {{ views[i] }}</p>
+      <p>{{ webcam.title }}  <ion-icon name="eye-outline" class="icon-eye"></ion-icon> {{ views[i] }}</p>
     </div>
     <div class="progress-bar"></div>
   </div>
