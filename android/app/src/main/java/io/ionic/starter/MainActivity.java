@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package app.quetalelpuente.ggcode;
 
 import com.getcapacitor.BridgeActivity;
 
