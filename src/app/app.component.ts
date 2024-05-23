@@ -14,7 +14,7 @@ export class AppComponent {
     await Share.share({
       title: 'Compartir App',
       text: '¡Mira esta increíble app!',
-      url: 'https://example.com', // Cambia esto al enlace de tu app
+      url: 'https://play.google.com/store/apps/details?id=app.quetalelpuente.ggcode', // Cambia esto al enlace de tu app
       dialogTitle: 'Compartir con amigos',
     });
   }

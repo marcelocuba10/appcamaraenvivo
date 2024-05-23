@@ -13,7 +13,7 @@
   </ion-refresher>
   
   <div *ngFor="let webcam of webcams; let i = index" class="video-container">
-    <video *ngIf="webcam.type === 'M3u8'" #videoPlayer controls width="100%" height="auto"></video>
+    <video *ngIf="webcam.type === 'M3u8'" #videoPlayer width="100%" height="auto"></video>
     <iframe *ngIf="webcam.type === 'Iframe'" [src]="webcam.url" height="300px" width="100%" scrolling="NO" allowfullscreen="" class="mg-iframe"></iframe>
     <div class="video-info">
       <p>{{ webcam.title }}  <ion-icon name="eye-outline" class="icon-eye"></ion-icon> {{ views[i] }}</p>
