@@ -32,6 +32,7 @@ export class HomePage implements AfterViewInit {
     }
 
     this.loadWebcams();
+    this.startVideoPlayback(); // Iniciar la reproducción de los videos
   }
 
   async showBanner() {
@@ -52,12 +53,15 @@ export class HomePage implements AfterViewInit {
 
   loadWebcams() {
     this.webcamService.getWebcams().subscribe((data) => {
-      this.webcams = data.map((webcam: any) => {
-        if (webcam.type === 'Iframe') {
-          webcam.url = this.sanitizer.bypassSecurityTrustResourceUrl(webcam.url);
-        }
-        return webcam;
-      });
+      this.webcams = data
+        .filter((webcam: any) => webcam.status === "1") // Filtrar por status 1
+        .map((webcam: any) => {
+          if (webcam.type === 'Iframe') {
+            webcam.url = this.sanitizer.bypassSecurityTrustResourceUrl(webcam.url);
+          }
+          return webcam;
+        });
+
       this.views = this.webcams.map(() => this.getRandomNumber());
 
       // Forzar la detección de cambios para asegurarnos de que los ViewChildren estén inicializados
@@ -78,12 +82,12 @@ export class HomePage implements AfterViewInit {
           hls.loadSource(webcam.url);
           hls.attachMedia(videoElement);
           hls.on(Hls.Events.MANIFEST_PARSED, () => {
-            // No reproducir automáticamente al iniciar
+            videoElement.play(); // Reproducir automáticamente al iniciar
           });
         } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
           videoElement.src = webcam.url;
           videoElement.addEventListener('loadedmetadata', () => {
-            // No reproducir automáticamente al iniciar
+            videoElement.play(); // Reproducir automáticamente al iniciar
           });
         }
       }
@@ -107,5 +111,16 @@ export class HomePage implements AfterViewInit {
   doRefresh(event: any) {
     this.loadWebcams();
     event.target.complete(); // Finalizar la acción de refresco
+  }
+
+  startVideoPlayback() {
+    // Reproducir automáticamente los videos .m3u8 al cargar la página
+    this.videoPlayers.forEach((videoPlayer, index) => {
+      const webcam = this.webcams[index];
+      if (webcam && webcam.type === 'M3u8') {
+        const videoElement = videoPlayer.nativeElement;
+        videoElement.play();
+      }
+    });
   }
 }

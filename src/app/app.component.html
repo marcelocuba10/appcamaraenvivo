@@ -1,3 +1,39 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content">
+      <ion-content>
+
+        <div class="menu-header-bg">
+          <div class="header-content">
+            <img src="assets/img/logo.png">
+            <ion-label>
+              <h2>¿Que tal el puente?</h2>
+              <p class="head-subtitle-center">Cámaras en vivo triple frontera</p>
+            </ion-label>
+          </div>
+        </div>
+
+        <ion-list>
+          <ion-item routerLink="/home">
+            <ion-icon slot="start" name="videocam-outline"></ion-icon>
+            <ion-label>Cámaras</ion-label>
+          </ion-item>
+          <ion-item routerLink="/forecast">
+            <ion-icon slot="start" name="partly-sunny-outline"></ion-icon>
+            <ion-label>Pronóstico</ion-label>
+          </ion-item>
+          <ion-item (click)="shareApp()">
+            <ion-icon slot="start" name="share-outline"></ion-icon>
+            <ion-label>Compartir app</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon slot="start" name="information-circle-outline"></ion-icon>
+            <ion-label>Versión 1.4</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
 </ion-app>
