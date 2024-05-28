@@ -2,7 +2,7 @@ import { Component, AfterViewInit, ViewChildren, ElementRef, QueryList, ChangeDe
 import { WebcamService } from '../services/webcam.service';
 import Hls from 'hls.js';
 import { DomSanitizer } from '@angular/platform-browser';
-import { AdMob, BannerAdOptions, BannerAdPosition, BannerAdSize } from '@capacitor-community/admob';
+import { AdMob, BannerAdOptions, AdOptions, BannerAdPosition, BannerAdSize } from '@capacitor-community/admob';
 import { IonRefresher } from '@ionic/angular';
 
 @Component({
@@ -27,6 +27,7 @@ export class HomePage implements AfterViewInit {
     try {
       await AdMob.initialize();
       this.showBanner();
+      this.showInterstitialAd();
     } catch (error) {
       console.error('AdMob initialization error:', error);
     }
@@ -48,6 +49,21 @@ export class HomePage implements AfterViewInit {
       await AdMob.showBanner(options);
     } catch (error) {
       console.error('Error showing banner ad:', error);
+    }
+  }
+
+  async showInterstitialAd() {
+    const options: AdOptions = {
+      adId: 'ca-app-pub-9253092378386410/5413255304',
+      isTesting: false // Cambiar a false para producción
+    };
+
+    try {
+      await AdMob.prepareInterstitial(options);
+      await AdMob.showInterstitial();
+      console.log('Interstitial ad shown');
+    } catch (error) {
+      console.error('Error showing interstitial ad:', error);
     }
   }
 
@@ -108,11 +124,6 @@ export class HomePage implements AfterViewInit {
     return Math.floor(Math.random() * 10000) + 1; // Número aleatorio entre 1 y 10000
   }
 
-  doRefresh(event: any) {
-    this.loadWebcams();
-    event.target.complete(); // Finalizar la acción de refresco
-  }
-
   startVideoPlayback() {
     // Reproducir automáticamente los videos .m3u8 al cargar la página
     this.videoPlayers.forEach((videoPlayer, index) => {
@@ -122,5 +133,12 @@ export class HomePage implements AfterViewInit {
         videoElement.play();
       }
     });
+  }
+
+  doRefresh(event: any) {
+    this.loadWebcams();
+    if (event) {
+      event.target.complete(); // Finalizar la acción de refresco si hay un evento
+    }
   }
 }

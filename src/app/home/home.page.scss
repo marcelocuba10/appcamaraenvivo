@@ -91,3 +91,7 @@ ion-icon.icon-eye.md.hydrated {
   font-size: 20px;
   vertical-align: sub;
 }
+
+ion-fab {
+  z-index: 10; /* Asegúrate de que el botón esté sobre otros elementos */
+}

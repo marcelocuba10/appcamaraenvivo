@@ -1,8 +1,16 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title class="ion-text-center">
-      Cámaras en vivo - Triple Frontera
+      Cámaras en Vivo
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="doRefresh(null)">
+        <ion-icon slot="icon-only" name="sync-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
