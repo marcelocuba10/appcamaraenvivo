@@ -18,7 +18,14 @@ export class WebcamService {
   }
 
   private handleError(error: HttpErrorResponse) {
-    let errorMessage = 'Cámara no disponible en este momento. Por favor, actualice la página e inténtelo de nuevo.';
+    let errorMessage = 'Cámara no disponible en este momento. Por favor, intente más tarde.';
+
+    if (error.status === 502) {
+      errorMessage = 'E502: Cámara no disponible en este momento. Por favor, intente más tarde.';
+    }
+
+    console.error(`Backend returned code ${error.status}, body was: ${error.message}`);
+
     return throwError(errorMessage);
   }
 }

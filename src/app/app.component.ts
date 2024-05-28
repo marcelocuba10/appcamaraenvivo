@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Share } from '@capacitor/share';
-import { Platform } from '@ionic/angular';
+import { Platform, MenuController } from '@ionic/angular';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,17 @@ import { Platform } from '@ionic/angular';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private platform: Platform) {}
+  constructor(private platform: Platform, private menu: MenuController, private router: Router) {
+    this.initializeApp();
+  }
+
+  initializeApp() {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.menu.close();  // Cerrar el menú automáticamente al navegar
+      }
+    });
+  }
 
   async shareApp() {
     await Share.share({
